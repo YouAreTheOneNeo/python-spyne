@@ -1,6 +1,6 @@
-FROM python:3.7.3-alpine3.8
+FROM alpine:latest
 
-RUN apk update && \
-  apk upgrade && \ 
-  apk add sqlite g++ libxslt-dev libxml2-dev && \
-  pip install spyne==2.13.2a0 lxml
+RUN apk add --no-cache python3 py3-lxml sqlite && \
+    ln -s /usr/bin/python3 /usr/bin/python && \
+    ln -s /usr/bin/pip3 /usr/bin/pip && \
+    pip install spyne==2.13.2a0
